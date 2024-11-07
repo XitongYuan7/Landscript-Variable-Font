@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page Full Screen with Green Background</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        :root {
+            --land: 0;
+        }
+
+        @font-face {
+            font-family: "Landscript";
+            src: url("LandscriptVF.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "ABCMonumentGrotesk-Regular-Trial";
+            src: url("ABCMonumentGrotesk-Regular-Trial.otf") format("opentype");
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            font-family: "ABCMonumentGrotesk-Regular-Trial", Arial, sans-serif;
+            background-color: #00ffb3;
+        }
+
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            padding: 20px;
+            background-image: url("https://freight.cargo.site/t/original/i/db8ebf8b4cee4e4e26462aed6aa19b610ce66ff274bc9d2fe8b3c9cfcd04834d/backdrop01.jpg");
+            background-size: cover;
+            background-position: center;
+            color: yellow;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: "ABCMonumentGrotesk-Regular-Trial", Arial, sans-serif;
+            font-size: 4rem;
+            margin-top: 20px;
+            ?text-shadow: -0.8px -0.8px 0 black, 0.8px -0.8px 0 black, -0.8px 0.8px 0 black, 0.8px 0.8px 0 black;
+            paint-order: stroke fill;
+            -webkit-text-stroke: 2px black;
+        }
+
+        .hero-text {
+            font-family: "Landscript", sans-serif;
+            font-size: 30vw;
+            line-height: .5em;
+            word-break: break-word;
+            animation: fontLandAnimation 1.7s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            /* text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; */
+            paint-order: stroke fill;
+            -webkit-text-stroke: 2.5px black;
+            padding-bottom: 10vh;
+            transform: translateY(-12%);
+        }
+
+        .info-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            padding: 50px;
+            background-color: yellow;
+            color: #000;
+            height: 100vh;
+            max-height: auto;
+        }
+
+        .info-column {
+            padding: 30px;
+        }
+
+        .info-title {
+            font-family: "ABCMonumentGrotesk-Regular-Trial", Arial, sans-serif;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .info-paragraph {
+            font-family: "ABCMonumentGrotesk-Regular-Trial", Arial, sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            margin-top: 5px;
+        }
+
+        .additional-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            padding: 50px;
+            background-color: #00ffb3;
+            color: #fff;
+            height: 100vh;
+            background-image: url("https://freight.cargo.site/t/original/i/3496049bb1ec11947ed7121a98560fb5434651bfed0fd40df20529553da5f9b7/backdrop07.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+
+        }
+
+        .additional-text {
+            font-family: "Landscript", Arial, sans-serif;
+            font-size: 27vw;
+            text-align: center;
+            color: yellow;
+            animation: fontLandAnimation 1.6s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+            margin: 0;
+            transform: translateY(-10%);
+            /* text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; */
+            paint-order: stroke fill;
+            -webkit-text-stroke: 2.5px black;
+        }
+
+        .keyboard-section {
+            justify-items: center;
+            align-items: center;
+            height: auto;
+            width: 100vw;
+            max-height: auto;
+            padding: 50px;
+            background-size: cover;
+            background-position: center;
+            color: black;
+            background-color: #1CE5B1;
+            text-align: center;
+
+            background-image: url("https://freight.cargo.site/t/original/i/54c722882ede80784c02f912535a08f0df3ab52ec2b69d85945537e3e2e6f641/backdrop08.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .keyboard-text {
+            font-family: "Landscript", sans-serif;
+            font-variation-settings: "LAND" 0;
+            font-size: 25vw;
+            animation: fontLandAnimation 1.6s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+            /* margin-bottom: -20px; */
+            /* margin-top: -50px; */
+            line-height: 1.1em;
+        }
+
+        .keyboard-container-gray {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #D9D9D9;
+            padding: 30px;
+            border: 1px solid black;
+            margin-bottom: 60px;
+        }
+
+        .keyboard-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 720px;
+            padding: 20px;
+            background-color: #00ACFF;
+            border: 1px solid black;
+        }
+
+        .keyboard-section button {
+            background-color: yellow;
+            color: black;
+            font-family: "landscript", Arial, sans-serif;
+            font-size: 2.2rem;
+            border: 1px solid black;
+            width: 60px;
+            height: 60px;
+            padding: 0;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .keyboard-section button:hover {
+            background-color: black;
+            color: yellow;
+        }
+
+        @keyframes landscript-animation {
+            0% {
+                font-variation-settings: "LAND" 0;
+            }
+
+            100% {
+                font-variation-settings: "LAND" 1000;
+            }
+        }
+
+        .editable-section-title {
+            font-family: "Landscript", Arial, sans-serif;
+            font-size: 6rem;
+            text-align: center;
+            color: #000;
+            margin-bottom: 60px;
+        }
+
+        .editable-section-content {
+            font-family: "Landscript", sans-serif;
+            font-variation-settings: "LAND" 1000;
+            font-size: 4rem;
+            text-shadow: -0.8px -0.8px 0 black, 0.8px -0.8px 0 black, -0.8px 0.8px 0 black, 0.8px 0.8px 0 black;
+            margin-top: 20px;
+            line-height: 90%;
+            background-color: #1CE5B1;
+            color: #64DC18;
+            padding: 20px;
+            border: 1.5px dashed black;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 100vw;
+            margin: 0 auto;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            overflow: hidden;
+            outline: none;
+            resize: none;
+        }
+
+        .editable-section-content:focus {
+            outline: none;
+            border-color: yellow;
+        }
+
+        .editable-section-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            background-color: yellow;
+            color: black;
+            height: auto;
+            min-height: 100vh;
+        }
+
+        .blue-text {
+            color: #00ACFF;
+        }
+
+        .pink-text {
+            color: #FF94b7;
+        }
+
+        .orange-text {
+            color: #FFA600;
+        }
+
+        .green-text {
+            color: #ABE600;
+        }
+
+        .container {
+            width: 100vw;
+            height: 300vh;
+        }
+
+        .landscape {
+            width: 100vw;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: yellow;
+            /* text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; */
+            paint-order: stroke fill;
+            -webkit-text-stroke: 2.5px black;
+            font-family: "Landscript", sans-serif;
+            font-size: 20vw;
+            font-variation-settings: "LAND" var(--land);
+            background-image: url("https://freight.cargo.site/t/original/i/7a85f679307193e66da4cc32e19a8fb5e0f1845056e623002118248637acf036/background04.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .landscape3 {
+            width: 100vw;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: yellow;
+            /* text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; */
+            paint-order: stroke fill;
+            -webkit-text-stroke: 2.5px black;
+            font-family: "Landscript", sans-serif;
+            font-size: 20vw;
+            font-variation-settings: "LAND" var(--land);
+            background-image: url("https://freight.cargo.site/t/original/i/37e41338d2a39160886d87b87340a3bd51dbed1dcedfaf70b25167bd51e148af/background05.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .landscape2 {
+            width: 100vw;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: yellow;
+            /* text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; */
+            paint-order: stroke fill;
+            -webkit-text-stroke: 2.5px black;
+            font-family: "Landscript", sans-serif;
+            font-size: 20vw;
+            font-variation-settings: "LAND" var(--land);
+            background-image: url("https://freight.cargo.site/t/original/i/98f09a8e1bbead32fca7ce2dd4486dd39a106ab35b55286ba2749eaf96890128/background01.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .footer {
+            font-family: "ABCMonumentGrotesk-Regular-Trial", Arial, sans-serif;
+            background-color: #F08BAD;
+            color: yellow;
+            text-align: center;
+            font-size: 15px;
+            padding: 5px 50px;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -5px 15px #F08BAD;
+        }
+
+        .content-section:nth-child(odd) {
+            background-color: #00ffb3;
+        }
+
+        .content-section:nth-child(even) {
+            background-color: #000;
+        }
+
+        /* Image Style Adjustment */
+        .info-column img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        /* Animation */
+        @keyframes fontLandAnimation {
+
+            0%,
+            100% {
+                font-variation-settings: 'LAND' 1000;
+            }
+
+            40%,
+            60% {
+                font-variation-settings: 'LAND' 0;
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 20px;
+            }
+
+            .info-section,
+            .additional-section,
+            .keyboard-section {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .keyboard-container {
+                width: 90%;
+            }
+
+            .keyboard-text {
+                font-size: 200px;
+            }
+
+            .keyboard-section button {
+                font-size: 1.5rem;
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text {
+                font-size: 13vw;
+            }
+
+            .content-section {
+                padding: 10px;
+            }
+
+            .keyboard-text {
+                font-size: 100px;
+            }
+
+            .keyboard-section button {
+                font-size: 1rem;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero-section">
+        <div class="hero-title">landscript</div>
+        <div class="hero-text">view<br></div>
+    </div>
+
+    <div class="info-section">
+        <div class="info-column">
+            <div class="info-title">INFO</div>
+            <div class="info-paragraph">
+                Fabian Harb drew the first version of ABC Whyte years ago, after coming across a type sample from the
+                early heyday of grotesques during a bout of archival digging. A few years later, we noticed that the
+                design had aged gracefully, and so our lead designer Erkin Karamemet took up the task of exploring new
+                possibilities for it. Fourteen months of dedicated work and 27,040 characters later, two
+                related-yet-visually-distinctive font families materialized: ABC Whyte and ABC Whyte Inktrap.<br><br>
+
+                ABC Whyte has smooth and sharp transitions, while Inktrap has curt yet also curvy ink traps at its
+                joints. Ink traps were of course necessary during the hot type era, in order to improve printing
+                quality. With the emergence of variable font technology, we were intent on reviving and rethinking the
+                idea of ink traps in the context of new tools. Both families consist of 10 weights with corresponding
+                Italics, amounting to 40 font styles in total. Each also features a wide range of international
+                punctuation and currency signs.
+            </div>
+        </div>
+
+        <div class="info-column">
+            <div class="info-title">CREDITS</div>
+            <div class="info-paragraph">
+                RISD Graphic Design 2024 Fall<br><br>
+                Advisory: Gabriel Drozdov<br>
+                Design: Rocky (Xitong) Yuan<br>
+                Web Specimen: Rocky (Xitong) Yuan<br>
+                Special Thanks: Tina Zhou<br><br>
+                <div class="info-title">SUPPORTED LANGUAGE</div>
+                <div class="info-paragraph">English</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <p class="landscape">valley</p>
+    </div>
+
+    <div class="container">
+        <p class="landscape2">jungle</p>
+    </div>
+
+    <div class="container">
+        <p class="landscape3">river</p>
+    </div>
+
+
+
+
+    <div class="keyboard-section">
+        <p class="keyboard-text my-element">a</p>
+        <div class="keyboard-container-gray">
+            <div class="keyboard-container">
+                <button onmouseenter="swapLetter('a')">a</button>
+                <button onmouseenter="swapLetter('b')">b</button>
+                <button onmouseenter="swapLetter('c')">c</button>
+                <button onmouseenter="swapLetter('d')">d</button>
+                <button onmouseenter="swapLetter('e')">e</button>
+                <button onmouseenter="swapLetter('f')">f</button>
+                <button onmouseenter="swapLetter('g')">g</button>
+                <button onmouseenter="swapLetter('h')">h</button>
+                <button onmouseenter="swapLetter('i')">i</button><br>
+                <button onmouseenter="swapLetter('j')">j</button>
+                <button onmouseenter="swapLetter('k')">k</button>
+                <button onmouseenter="swapLetter('l')">l</button>
+                <button onmouseenter="swapLetter('m')">m</button>
+                <button onmouseenter="swapLetter('n')">n</button>
+                <button onmouseenter="swapLetter('o')">o</button>
+                <button onmouseenter="swapLetter('p')">p</button>
+                <button onmouseenter="swapLetter('q')">q</button>
+                <button onmouseenter="swapLetter('r')">r</button><br>
+                <button onmouseenter="swapLetter('s')">s</button>
+                <button onmouseenter="swapLetter('t')">t</button>
+                <button onmouseenter="swapLetter('u')">u</button>
+                <button onmouseenter="swapLetter('v')">v</button>
+                <button onmouseenter="swapLetter('w')">w</button>
+                <button onmouseenter="swapLetter('x')">x</button>
+                <button onmouseenter="swapLetter('y')">y</button>
+                <button onmouseenter="swapLetter('z')">z</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="editable-section-container">
+        <div class="editable-section-title">🛣️ type box👇🏼</div>
+        <div class="editable-section-content" contenteditable="plaintext-only">mm<span
+                class="pink-text">w</span>mmmmmmmmmmmmmmmmmmmmmmmmmmm<span class="pink-text">k</span><span
+                class="green-text">f</span>mm<span class="pink-text">e</span>mmmmmm<span
+                class="orange-text">p</span>mmmmm<span class="green-text">f</span>mmmm<span
+                class="blue-text">ljljljl</span>mmmmmmmmmm<span class="orange-text">v</span>mm<span
+                class="green-text">f</span>nnnm<span class="blue-text">ljljljl</span>mmmmmmmmmmmmmm<span
+                class="blue-text">ljljljl</span>mmmmm<span class="green-text">f</span>mmmmmmmmm<span
+                class="orange-text">c</span><span class="blue-text">ljljljl</span>mmmmmmmmmm<span
+                class="pink-text">g</span>mmmm<span class="pink-text">a</span>mmmmmmm<span
+                class="green-text">f</span>mmmmmmmmmmmmmmmmm<span class="pink-text">j</span>mmmmmm<span
+                class="orange-text">d</span>mmm</div>
+    </div>
+
+    <footer class="footer">
+        <p>Landscript is a variable typeface designed by Rocky Yuan. For use inquiries, please contact xy@brown.edu.</p>
+    </footer>
+
+
+    <script>
+        const root = document.documentElement;
+        const containers = document.querySelectorAll('.container');
+
+        function setAxes() {
+            containers.forEach(container => {
+                const landscape = container.querySelector('.landscape, .landscape2, .landscape3');
+                if (landscape) {
+                    const scrollTop = container.offsetTop;
+                    const scrollHeight = container.offsetHeight;
+                    const scrollPosition = window.scrollY;
+                    let pixelsScrolled = (scrollPosition - scrollTop) * 1.5;
+                    let percentScrolled = pixelsScrolled / (scrollHeight - window.innerHeight);
+
+                    percentScrolled = Math.max(0, Math.min(percentScrolled, 1));
+
+                    const land = Math.round((1 - percentScrolled) * 1000);
+                    landscape.style.setProperty('--land', land);
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setAxes);
+
+
+        function swapLetter(newLetter) {
+            var myElement = document.querySelector(".my-element");
+            myElement.innerText = newLetter;
+        }
+    </script>
+</body>
+
+</html>
