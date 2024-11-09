@@ -15,7 +15,14 @@
         }
 
         :root {
-            --land: 0;
+            --land-1: 0;
+            --font-size-1: 180px;
+            --land-2: 0;
+            --font-size-2: 100px;
+            --land-3: 0;
+            --font-size-3: 548px;
+            --letter-spacing: 0px;
+
         }
 
         @font-face {
@@ -55,7 +62,7 @@
             font-family: "ABCMonumentGrotesk-Regular-Trial", Arial, sans-serif;
             font-size: 4rem;
             margin-top: 20px;
-            ?text-shadow: -0.8px -0.8px 0 black, 0.8px -0.8px 0 black, -0.8px 0.8px 0 black, 0.8px 0.8px 0 black;
+            text-shadow: -0.8px -0.8px 0 black, 0.8px -0.8px 0 black, -0.8px 0.8px 0 black, 0.8px 0.8px 0 black;
             paint-order: stroke fill;
             -webkit-text-stroke: 2px black;
         }
@@ -63,14 +70,13 @@
         .hero-text {
             font-family: "Landscript", sans-serif;
             font-size: 30vw;
-            line-height: .5em;
+            line-height: 0.5em;
             word-break: break-word;
             animation: fontLandAnimation 1.7s cubic-bezier(0.25, 1, 0.5, 1) infinite;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-grow: 1;
-            /* text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; */
             paint-order: stroke fill;
             -webkit-text-stroke: 2.5px black;
             padding-bottom: 10vh;
@@ -84,8 +90,6 @@
             padding: 50px;
             background-color: yellow;
             color: #000;
-            height: 100vh;
-            max-height: auto;
         }
 
         .info-column {
@@ -118,7 +122,6 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
-
         }
 
         .additional-text {
@@ -129,7 +132,6 @@
             animation: fontLandAnimation 1.6s cubic-bezier(0.25, 1, 0.5, 1) infinite;
             margin: 0;
             transform: translateY(-10%);
-            /* text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; */
             paint-order: stroke fill;
             -webkit-text-stroke: 2.5px black;
         }
@@ -157,8 +159,6 @@
             font-variation-settings: "LAND" 0;
             font-size: 25vw;
             animation: fontLandAnimation 1.6s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-            /* margin-bottom: -20px; */
-            /* margin-top: -50px; */
             line-height: 1.1em;
         }
 
@@ -187,7 +187,7 @@
         .keyboard-section button {
             background-color: yellow;
             color: black;
-            font-family: "landscript", Arial, sans-serif;
+            font-family: "Landscript", Arial, sans-serif;
             font-size: 2.2rem;
             border: 1px solid black;
             width: 60px;
@@ -276,31 +276,20 @@
         }
 
         .container {
-            width: 100vw;
             height: 300vh;
+            text-align: center;
+            box-sizing: border-box;
         }
 
-        .landscape {
-            width: 100vw;
-            height: 100vh;
-            position: sticky;
-            top: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: yellow;
-            /* text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; */
-            paint-order: stroke fill;
-            -webkit-text-stroke: 2.5px black;
-            font-family: "Landscript", sans-serif;
-            font-size: 20vw;
-            font-variation-settings: "LAND" var(--land);
-            background-image: url("background01.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
+        .type-test-container {
+            text-align: center;
+            box-sizing: border-box;
+            outline: 2px dashed #9c9c9c;
+
         }
 
+        .landscape,
+        .landscape2,
         .landscape3 {
             width: 100vw;
             height: 100vh;
@@ -310,37 +299,26 @@
             align-items: center;
             justify-content: center;
             color: yellow;
-            /* text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; */
             paint-order: stroke fill;
             -webkit-text-stroke: 2.5px black;
             font-family: "Landscript", sans-serif;
             font-size: 20vw;
             font-variation-settings: "LAND" var(--land);
-            background-image: url("background03.jpg");
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
         }
 
+        .landscape {
+            background-image: url("background01.jpg");
+        }
+
         .landscape2 {
-            width: 100vw;
-            height: 100vh;
-            position: sticky;
-            top: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: yellow;
-            /* text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; */
-            paint-order: stroke fill;
-            -webkit-text-stroke: 2.5px black;
-            font-family: "Landscript", sans-serif;
-            font-size: 20vw;
-            font-variation-settings: "LAND" var(--land);
             background-image: url("background02.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
+        }
+
+        .landscape3 {
+            background-image: url("background03.jpg");
         }
 
         .footer {
@@ -355,15 +333,93 @@
             box-shadow: 0 -5px 15px #F08BAD;
         }
 
-        .content-section:nth-child(odd) {
-            background-color: #00ffb3;
+        .slider-tester-1 {
+            font-family: "Landscript", sans-serif;
+            font-variation-settings: "LAND" var(--land-1);
+            font-size: var(--font-size-1);
+            letter-spacing: var(--letter-spacing);
         }
 
-        .content-section:nth-child(even) {
-            background-color: #000;
+        .slider-tester-2 {
+            font-family: "Landscript", sans-serif;
+            font-variation-settings: "LAND" var(--land-2);
+            font-size: var(--font-size-2);
+            letter-spacing: var(--letter-spacing);
         }
 
-        /* Image Style Adjustment */
+        .slider-tester-3 {
+            font-family: "Landscript", sans-serif;
+            font-variation-settings: "LAND" var(--land-3);
+            font-size: var(--font-size-3);
+            letter-spacing: var(--letter-spacing);
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            height: 2px;
+            background: #9c9c9c;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            background: #000000;
+            border-radius: 50%;
+            width: 7px;
+            height: 7px;
+
+
+
+
+        }
+
+        .slider-wrapper {
+
+            padding-top: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            box-sizing: border-box;
+        }
+
+        .slider-container {
+            text-align: left;
+            padding-bottom: 40px;
+        }
+
+        .slider-container h2 {
+            font-family: "ABCMonumentGrotesk-Regular-Trial";
+            font-size: 16px;
+            width: 170px;
+        }
+
+        .yellow-background-container {
+            background-color: yellow;
+            width: 100%;
+            padding: 0 20px 0px 20px;
+            box-sizing: border-box;
+        }
+
+        .yellow-background-container-2 {
+            background-color: yellow;
+            width: 100%;
+            padding: 0 20px 20px 20px;
+            box-sizing: border-box;
+        }
+
+
+
+        .flexbox {
+            display: flex;
+            flex-direction: row;
+            width: 100vw;
+
+
+
+
+
+
+        }
+
         .info-column img {
             width: 100%;
             max-width: 300px;
@@ -371,7 +427,6 @@
             margin-top: 20px;
         }
 
-        /* Animation */
         @keyframes fontLandAnimation {
 
             0%,
@@ -385,7 +440,16 @@
             }
         }
 
-        /* Responsive Adjustments */
+        @media (max-width: 1200px) {
+
+            .flexbox {
+                flex-direction: column;
+            }
+
+        }
+
+
+
         @media (max-width: 768px) {
             .content-section {
                 padding: 20px;
@@ -404,6 +468,10 @@
 
             .keyboard-text {
                 font-size: 200px;
+            }
+
+            .flexbox {
+                flex-direction: column;
             }
 
             .keyboard-section button {
@@ -474,7 +542,6 @@
         </div>
     </div>
 
-
     <div class="container">
         <p class="landscape">valley</p>
     </div>
@@ -487,8 +554,74 @@
         <p class="landscape3">river</p>
     </div>
 
+    <div class="yellow-background-container">
+        <div class="slider-wrapper">
+            <div class="slider-container">
+                <h2>landscape</h2>
+                <label for="land"><span id="current-land-1">0</span></label>
+                <input class="slider" name="land" type="range" min="0" max="1000" value="0"
+                    oninput="setLand1(this.value)">
+            </div>
 
+            <div class="slider-container">
+                <h2>Size</h2>
+                <label for="font-size"><span id="current-font-size-1">180</span>px</label>
+                <input class="slider" name="font-size" type="range" min="100" max="300" value="180"
+                    oninput="setFontSize1(this.value)">
+            </div>
+        </div>
 
+        <div class="type-test-container">
+            <p class="slider-tester-1" contenteditable="plaintext-only">abcdefghij<br>klmnopqrs<br>tuvwxyz</p>
+        </div>
+    </div>
+
+    <div class="flexbox">
+        <div class="yellow-background-container-2">
+            <div class="slider-wrapper">
+                <div class="slider-container">
+                    <h2>Landscape</h2>
+                    <label for="land"><span id="current-land-2">0</span></label>
+                    <input class="slider" id="slider1" type="range" min="0" max="1000" value="0"
+                        oninput="setLand2(this.value)">
+                </div>
+
+                <div class="slider-container">
+                    <h2>Size</h2>
+                    <label for="font-size"><span id="current-font-size-2">100</span>px</label>
+                    <input class="slider" type="range" min="50" max="100" value="100"
+                        oninput="setFontSize2(this.value)">
+                </div>
+            </div>
+
+            <div class="type-test-container">
+                <div class="slider-tester-2" id="type-box-2" contenteditable="true">🤩 💭 i 💭 🤩<br>💌 love 💌<br>💅🏼
+                    friday 💅🏼<br>🏜️horizon🏜️<br>☁️ cloud ☁️</div>
+            </div>
+        </div>
+
+        <div class="yellow-background-container-2">
+            <div class="slider-wrapper">
+                <div class="slider-container">
+                    <h2>Landscape</h2>
+                    <label for="land3"><span id="current-land-3">0</span></label>
+                    <input class="slider" name="land3" type="range" min="0" max="1000" value="0"
+                        oninput="setLand3(this.value)">
+                </div>
+
+                <div class="slider-container">
+                    <h2>Size</h2>
+                    <label for="font-size"><span id="current-font-size-3">548</span>px</label>
+                    <input class="slider" name="font-size3" type="range" min="100" max="600" value="548"
+                        oninput="setFontSize3(this.value)">
+                </div>
+            </div>
+
+            <div class="type-test-container">
+                <p class="slider-tester-3" contenteditable="plaintext-only">w</p>
+            </div>
+        </div>
+    </div>
 
     <div class="keyboard-section">
         <p class="keyboard-text my-element">a</p>
@@ -524,8 +657,6 @@
         </div>
     </div>
 
-
-
     <div class="editable-section-container">
         <div class="editable-section-title">🛣️ type box👇🏼</div>
         <div class="editable-section-content" contenteditable="plaintext-only">mm<span
@@ -545,7 +676,6 @@
         <p>Landscript is a variable typeface designed by Xitong Yuan. For use inquiries, please contact xy@brown.edu.
         </p>
     </footer>
-
 
     <script>
         const root = document.documentElement;
@@ -571,11 +701,49 @@
 
         window.addEventListener('scroll', setAxes);
 
-
         function swapLetter(newLetter) {
             var myElement = document.querySelector(".my-element");
             myElement.innerText = newLetter;
         }
+        var myRoot = document.querySelector('html');
+
+        // First slider set
+        function setLand1(newLand) {
+            var currentLand = document.querySelector('#current-land-1');
+            currentLand.innerText = newLand;
+            myRoot.style.setProperty('--land-1', newLand);
+        }
+        function setFontSize1(newFontSize) {
+            var currentFontSize = document.querySelector('#current-font-size-1');
+            currentFontSize.innerText = newFontSize;
+            myRoot.style.setProperty('--font-size-1', newFontSize + "px");
+        }
+
+        // Second slider set
+        function setLand2(newLand) {
+            var currentLand = document.querySelector('#current-land-2');
+            currentLand.innerText = newLand;
+            myRoot.style.setProperty('--land-2', newLand);
+        }
+        function setFontSize2(newFontSize) {
+            var currentFontSize = document.querySelector('#current-font-size-2');
+            currentFontSize.innerText = newFontSize;
+            myRoot.style.setProperty('--font-size-2', newFontSize + "px");
+        }
+
+        // Third slider set
+        function setLand3(newLand) {
+            var currentLand = document.querySelector('#current-land-3');
+            currentLand.innerText = newLand;
+            myRoot.style.setProperty('--land-3', newLand);
+        }
+        function setFontSize3(newFontSize) {
+            var currentFontSize = document.querySelector('#current-font-size-3');
+            currentFontSize.innerText = newFontSize;
+            myRoot.style.setProperty('--font-size-3', newFontSize + "px");
+        }
+
+
     </script>
 </body>
 
