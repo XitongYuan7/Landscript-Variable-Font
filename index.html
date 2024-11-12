@@ -345,6 +345,7 @@
             font-variation-settings: "LAND" var(--land-2);
             font-size: var(--font-size-2);
             letter-spacing: var(--letter-spacing);
+            word-break: break-all;
         }
 
         .slider-tester-3 {
@@ -366,10 +367,12 @@
             border-radius: 50%;
             width: 7px;
             height: 7px;
+        }
 
-
-
-
+        .slider-group {
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .slider-wrapper {
@@ -558,16 +561,20 @@
         <div class="slider-wrapper">
             <div class="slider-container">
                 <h2>Landscape</h2>
-                <label for="land"><span id="current-land-1">0</span></label>
-                <input class="slider" name="land" type="range" min="0" max="1000" value="0"
-                    oninput="setLand1(this.value)">
+                <div class="slider-group">
+                    <label for="land"><span id="current-land-1">0</span></label>
+                    <input class="slider" name="land" type="range" min="0" max="1000" value="0"
+                        oninput="setLand1(this.value)">
+                </div>
             </div>
 
             <div class="slider-container">
                 <h2>Size</h2>
-                <label for="font-size"><span id="current-font-size-1">180</span>px</label>
-                <input class="slider" name="font-size" type="range" min="100" max="300" value="180"
-                    oninput="setFontSize1(this.value)">
+                <div class="slider-group">
+                    <label for="font-size"><span id="current-font-size-1">180</span>px</label>
+                    <input class="slider" name="font-size" type="range" min="100" max="300" value="180"
+                        oninput="setFontSize1(this.value)">
+                </div>
             </div>
         </div>
 
@@ -581,16 +588,19 @@
             <div class="slider-wrapper">
                 <div class="slider-container">
                     <h2>Landscape</h2>
-                    <label for="land"><span id="current-land-2">0</span></label>
-                    <input class="slider" id="slider1" type="range" min="0" max="1000" value="0"
-                        oninput="setLand2(this.value)">
+                    <div class="slider-group">
+                        <label for="land"><span id="current-land-2">0</span></label>
+                        <input class="slider" id="slider1" type="range" min="0" max="1000" value="0"
+                            oninput="setLand2(this.value)">
+                    </div>
                 </div>
-
                 <div class="slider-container">
                     <h2>Size</h2>
-                    <label for="font-size"><span id="current-font-size-2">100</span>px</label>
-                    <input class="slider" type="range" min="50" max="100" value="100"
-                        oninput="setFontSize2(this.value)">
+                    <div class="slider-group">
+                        <label for="font-size"><span id="current-font-size-2">100</span>px</label>
+                        <input class="slider" type="range" min="50" max="100" value="100"
+                            oninput="setFontSize2(this.value)">
+                    </div>
                 </div>
             </div>
 
@@ -604,16 +614,20 @@
             <div class="slider-wrapper">
                 <div class="slider-container">
                     <h2>Landscape</h2>
-                    <label for="land3"><span id="current-land-3">0</span></label>
-                    <input class="slider" name="land3" type="range" min="0" max="1000" value="0"
-                        oninput="setLand3(this.value)">
+                    <div class="slider-group">
+                        <label for="land3"><span id="current-land-3">0</span></label>
+                        <input class="slider" name="land3" type="range" min="0" max="1000" value="0"
+                            oninput="setLand3(this.value)">
+                    </div>
                 </div>
 
                 <div class="slider-container">
                     <h2>Size</h2>
-                    <label for="font-size"><span id="current-font-size-3">548</span>px</label>
-                    <input class="slider" name="font-size3" type="range" min="100" max="600" value="548"
-                        oninput="setFontSize3(this.value)">
+                    <div class="slider-group">
+                        <label for="font-size"><span id="current-font-size-3">548</span>px</label>
+                        <input class="slider" name="font-size3" type="range" min="100" max="600" value="548"
+                            oninput="setFontSize3(this.value)">
+                    </div>
                 </div>
             </div>
 
