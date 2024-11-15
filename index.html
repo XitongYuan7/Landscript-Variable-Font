@@ -4,7 +4,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page Full Screen with Green Background</title>
+    <title>Landscript</title>
+    <link rel="icon" type="image/x-icon" href="Icon.png">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.1/lib/p5.min.js"></script>
+    <script>
+        console.clear();
+
+        const SETTINGS = {
+            length: {
+                value: 200,
+                min: 50,
+                max: 1000,
+            },
+            segmentLength: {
+                value: 5,
+                min: 1,
+                max: 50,
+            },
+            strokeWidth: {
+                value: 4,
+                min: 1,
+                max: 10,
+            },
+            color: "#F08BAD",
+        };
+
+        let cursor;
+
+        function setup() {
+            let canvas = createCanvas(windowWidth, windowHeight);
+            canvas.parent("canvas-container");
+            reset();
+        }
+
+        function reset() {
+            cursor = new Cursor({
+                length: SETTINGS.length.value,
+                segmentLength: SETTINGS.segmentLength.value,
+                color: SETTINGS.color,
+            });
+        }
+
+        function draw() {
+            clear();
+            cursor.draw();
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+            reset();
+        }
+
+        // cursor class
+
+        class Cursor {
+            constructor(options = {}) {
+                this.length = options.length || 100;
+                this.color = options.color || color(255);
+                this.segmentLength = options.segmentLength || 5;
+                this.x = new Array(floor(this.length / this.segmentLength)).fill(0);
+                this.y = new Array(floor(this.length / this.segmentLength)).fill(0);
+            }
+
+            draw() {
+                stroke(this.color);
+                strokeWeight(SETTINGS.strokeWidth.value);
+                this.dragSegment(0, mouseX, mouseY);
+                for (let i = 0; i < this.x.length - 1; i++) {
+                    this.dragSegment(i + 1, this.x[i], this.y[i]);
+                }
+            }
+
+            dragSegment(i, xin, yin) {
+                let dx = xin - this.x[i];
+                let dy = yin - this.y[i];
+                let angle = atan2(dy, dx);
+                this.x[i] = xin - cos(angle) * this.segmentLength;
+                this.y[i] = yin - sin(angle) * this.segmentLength;
+                this.segment(this.x[i], this.y[i], angle);
+            }
+
+            segment(x, y, a) {
+                push();
+                translate(x, y);
+                rotate(a);
+                line(0, 0, this.segmentLength, 0);
+                pop();
+            }
+        }
+    </script>
+
 
     <style>
         * {
@@ -43,6 +132,7 @@
             background-color: #00ffb3;
         }
 
+        
         .hero-section {
             display: flex;
             flex-direction: column;
@@ -51,10 +141,10 @@
             height: 100vh;
             width: 100vw;
             padding: 20px;
-            background-image: url("backdrop.jpg");
+            background-image: url("backdrop.svg");
             background-size: cover;
             background-position: center;
-            color: yellow;
+            color: #ffff00;
             text-align: center;
         }
 
@@ -62,7 +152,7 @@
             font-family: "ABCMonumentGrotesk-Regular-Trial", Arial, sans-serif;
             font-size: 4rem;
             margin-top: 20px;
-            text-shadow: -0.8px -0.8px 0 black, 0.8px -0.8px 0 black, -0.8px 0.8px 0 black, 0.8px 0.8px 0 black;
+            /* text-shadow: -0.8px -0.8px 0 black, 0.8px -0.8px 0 black, -0.8px 0.8px 0 black, 0.8px 0.8px 0 black; */
             paint-order: stroke fill;
             -webkit-text-stroke: 2px black;
         }
@@ -137,10 +227,12 @@
         }
 
         .keyboard-section {
+            display: flex;
+            flex-direction: column;
             justify-items: center;
             align-items: center;
             height: auto;
-            width: 100vw;
+            /* width: 100vw; */
             max-height: auto;
             padding: 50px;
             background-size: cover;
@@ -148,7 +240,7 @@
             color: black;
             background-color: #1CE5B1;
             text-align: center;
-            background-image: url("background04.jpg");
+            background-image: url("background04.svg");
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
@@ -160,6 +252,7 @@
             font-size: 25vw;
             animation: fontLandAnimation 1.6s cubic-bezier(0.25, 1, 0.5, 1) infinite;
             line-height: 1.1em;
+            margin-bottom: 30px;
         }
 
         .keyboard-container-gray {
@@ -310,15 +403,15 @@
         }
 
         .landscape {
-            background-image: url("background01.jpg");
+            background-image: url("background01.svg");
         }
 
         .landscape2 {
-            background-image: url("background02.jpg");
+            background-image: url("background02.svg");
         }
 
         .landscape3 {
-            background-image: url("background03.jpg");
+            background-image: url("background03.svg");
         }
 
         .footer {
@@ -353,6 +446,7 @@
             font-variation-settings: "LAND" var(--land-3);
             font-size: var(--font-size-3);
             letter-spacing: var(--letter-spacing);
+            word-break: break-all;
         }
 
         .slider {
@@ -503,10 +597,21 @@
                 height: 40px;
             }
         }
+        #canvas-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    background-color: transparent;
+}
     </style>
 </head>
 
 <body>
+    <div id="canvas-container"></div>
     <div class="hero-section">
         <div class="hero-title">landscript</div>
         <div class="hero-text">view<br></div>
@@ -579,7 +684,7 @@
         </div>
 
         <div class="type-test-container">
-            <p class="slider-tester-1" contenteditable="plaintext-only">abcdefghij<br>klmnopqrs<br>tuvwxyz</p>
+            <p class="slider-tester-1" spellcheck="false" contenteditable="plaintext-only">abcdefghij<br>klmnopqrs<br>tuvwxyz</p>
         </div>
     </div>
 
@@ -605,7 +710,7 @@
             </div>
 
             <div class="type-test-container">
-                <div class="slider-tester-2" id="type-box-2" contenteditable="true">🤩 💭 i 💭 🤩<br>💌 love 💌<br>💅🏼
+                <div class="slider-tester-2" id="type-box-2" spellcheck="false" contenteditable="true">🤩 💭 i 💭 🤩<br>💌 love 💌<br>💅🏼
                     friday 💅🏼<br>🏜️horizon🏜️<br>☁️ cloud ☁️</div>
             </div>
         </div>
@@ -632,7 +737,7 @@
             </div>
 
             <div class="type-test-container">
-                <p class="slider-tester-3" contenteditable="plaintext-only">w</p>
+                <p class="slider-tester-3" spellcheck="false" contenteditable="plaintext-only">w</p>
             </div>
         </div>
     </div>
@@ -673,7 +778,7 @@
 
     <div class="editable-section-container">
         <div class="editable-section-title">🛣️ type box👇🏼</div>
-        <div class="editable-section-content" contenteditable="plaintext-only">mm<span
+        <div class="editable-section-content" spellcheck="false" contenteditable="plaintext-only">mm<span
                 class="pink-text">w</span>mmmmmmmmmmmmmmmmmmmmmmmmmmm<span class="pink-text">k</span><span
                 class="green-text">f</span>mm<span class="pink-text">e</span>mmmmmm<span
                 class="orange-text">p</span>mmmmm<span class="green-text">f</span>mmmm<span
